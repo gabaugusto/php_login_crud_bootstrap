@@ -8,13 +8,13 @@
   então ao verificar que a session não existe a página redireciona o mesmo
   para a index.php.*/
 
-  if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)) {
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('location:index.php');
+  if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)) {
+    unset($_SESSION['email']);
+    unset($_SESSION['password']);
+    header('location:sign.php?message="Please, enter again."');
   }
   
-  $logado = $_SESSION['login'];
+  $logged = $_SESSION['email'];
 
   require('includes/conn.php');
   $sql = "SELECT * FROM `alunos`";
@@ -58,7 +58,7 @@
   <link href="assets/dist/css/album.css" rel="stylesheet">
 </head>
 
-<body class="py-4">
+<body>
 
   <header>
     <div class="collapse bg-dark" id="navbarHeader">
@@ -104,14 +104,16 @@
     <?
       if ($result->num_rows > 0) {
             
-      echo '<table border="1">';
-      echo '<thead><tr><th>ID</th> <th>Nome</th> <th>Nascimento</th></tr></thead>';
+      echo '<table class="table">';
+      echo '<thead>';
+      echo '  <tr>';
+      echo '    <th scope="col">#</th>';
+      echo '    <th scope="col">Nome</th>';
+      echo '    <th scope="col">Data de Nascimento</th>';
+      echo '  </tr>';
+      echo '</thead> ';
       while($row = $result->fetch_assoc()) {
-        if ($row["id"] > 10) {
-          echo "<tr style='background: #ff0000;'><td> " . $row["id"]. " </td><td> " . $row["nome"]. " </td><td>  " . $row["data_nascimento"]. "</td></tr>";
-        } else {
           echo "<tr><td> " . $row["id"]. " </td><td> " . $row["nome"]. " </td><td>  " . $row["data_nascimento"]. "</td></tr>";
-        }
       }
       echo '</table>';
     } else {
@@ -119,7 +121,7 @@
     }
     ?>
 
-    <a href='logout.php'>Sair</a>
+    <a href='logout.php'>Logout</a>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"> </script>
     <script>
       window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')

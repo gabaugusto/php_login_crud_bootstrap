@@ -18,13 +18,13 @@
   resultado ele redirecionará para a página site.php ou retornara  para a página
   do formulário inicial para que se possa tentar novamente realizar o login */
   if ($result->num_rows > 0) {
-    $_SESSION['login'] = $login;
-    $_SESSION['senha'] = $senha;
+    $_SESSION['email'] = $login;
+    $_SESSION['password'] = $senha;
     header('location:home.php');
   } else {
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('location:sign.php');
+    unset($_SESSION['email']);
+    unset($_SESSION['password']);
+    header('location:sign.php?message="Login not sucessuful"');
   }
 ?>
 

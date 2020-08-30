@@ -1,7 +1,7 @@
 <?
     session_start();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
+    unset($_SESSION['email']);
+    unset($_SESSION['password']);
     session_destroy();
-    header('location:sign.php');
+    header('location:sign.php?message="Loggout sucessuful"');
 ?>
