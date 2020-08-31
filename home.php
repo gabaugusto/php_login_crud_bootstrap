@@ -9,42 +9,31 @@
   
   $logged = $_SESSION['email'];
 
-  $message = "Inserted with Sucess.";
   if(isset($_REQUEST['action'])){
     $action = $_REQUEST['action'];
   } else {
     $action = "";
   }
+  $message =""; 
 
-  if(isset($_REQUEST['email'])){
-    $email = $_REQUEST['email'];
-  }
-
-  if(isset($_REQUEST['name'])){
-    $name = $_REQUEST['name'];
-  }  
-
-  if(isset($_REQUEST['date'])){
-    $date = $_REQUEST['date'];
-  }    
 
   require('includes/conn.php');
   if ($action == 'insert') {
     $sql_s = "INSERT INTO `alunos` (name, email, data_nascimento) VALUES ('$name', '$email', '$date')";
-    $result_s = $conn->query($sql);
+    $result_s = $conn->query($sql_s);
     $message = "Inserted with Sucess.";
 
   } elseif ($action == 'update') {
-    $nome = $_REQUEST['nome'];
-    $id = $_REQUEST['id'];
+    $pwd = $_REQUEST['pwd'];
 
-    $sql_s = "UPDATE alunos SET nome='$nome' WHERE id=$id";
-    $result = $conn->query($sql);
+    $sql_s = "UPDATE alunos SET password='$pwd' WHERE email='$logged'";
+    $result = $conn->query($sql_s);
     $message = "Updated with Sucess.";
 
   } elseif ($action == 'delete') {
+    $id = $_REQUEST['id'];
     $sql_s = "DELETE FROM alunos WHERE id=$id";
-    $result = $conn->query($sql);
+    $result = $conn->query($sql_s);
     $message = "Deleted with sucess";
   }
 
@@ -92,10 +81,12 @@
   <div class="container">
 
     <h1>Welcome, Home</h1>
-    <?
 
-      if ($action != "") {
-        echo $message;
+    <?
+      if ($message != ""){
+        echo '<div class="alert alert-secondary">';
+        echo   '<strong>Success!</strong> ' . $message;
+        echo '</div>';
       }
 
       if ($result->num_rows > 0) {

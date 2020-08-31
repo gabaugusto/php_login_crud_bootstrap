@@ -5,12 +5,13 @@
             <div class="col-sm-8 col-md-7">
                 <!-- Links -->
                 <ul class="navbar-nav">
+                <li class="nav-item">
+                        <a class="nav-link" href="update.php">Change Password</a>
+                    </li>                
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link 1</a>
+                        <a class="nav-link" href="delete.php">Delete An User</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 2</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href='logout.php'>Logout</a>
                     </li>

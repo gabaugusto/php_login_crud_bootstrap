@@ -16,7 +16,7 @@
   } else {
     unset($_SESSION['email']);
     unset($_SESSION['password']);
-    header('location:sign.php?message="Login not sucessuful"');
+    header('location:sign.php?message=Login not sucessuful');
   }
 ?>
 
