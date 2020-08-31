@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 31, 2020 at 11:39 AM
+-- Generation Time: Aug 31, 2020 at 11:41 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -50,8 +50,7 @@ INSERT INTO `alunos` (`id`, `status`, `cpf`, `nome`, `email`, `password`, `fone`
 (6, '1', '88754215936', 'Jaime Sato', 'adobe@be.com', 'limes', '551198765873', '2020-05-25'),
 (38, '2', '85696375342', 'Carlos Santos ', 'car.santos@obol.com', 'melancia', '551389638541', '1982-02-25'),
 (37, '1', '2455869630', 'Gabriel Teixeira Azevedo', 'gab.text@gmail.com', '123456', '5511875349621', '1971-03-05'),
-(40, '2', '53698574156', '', 'a@b.com', 'abacaxi', '5511 42369875', '1980-12-25'),
-(39, '2', '53698574156', '', 'a@b.com', 'abacaxi', '5511 42369875', '1980-12-25');
+(40, '2', '53698574156', 'Sumaia Sandins', 'a@b.com', 'abacaxi', '5511 42369875', '1980-12-25');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
