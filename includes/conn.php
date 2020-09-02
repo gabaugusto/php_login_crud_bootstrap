@@ -11,4 +11,6 @@
     if ($conn->connect_error) {
       die("XXXXXXXXXXX: " . $conn->connect_error);
     }
+
+    date_default_timezone_set("America/Sao_Paulo");
 ?>

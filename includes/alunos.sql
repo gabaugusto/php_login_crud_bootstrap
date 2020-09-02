@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `alunos` (
   `fone` char(14) NOT NULL,
   `data_nascimento` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `alunos`

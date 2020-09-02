@@ -12,6 +12,7 @@
   if ($result->num_rows > 0) {
     $_SESSION['email'] = $login;
     $_SESSION['password'] = $senha;
+
     header('location:home.php');
   } else {
     unset($_SESSION['email']);

@@ -6,6 +6,9 @@
                 <!-- Links -->
                 <ul class="navbar-nav">
                 <li class="nav-item">
+                        <a class="nav-link" href="insert.php">Insert</a>
+                    </li>                    
+                    <li class="nav-item">
                         <a class="nav-link" href="update.php">Change Password</a>
                     </li>                
                     <li class="nav-item">

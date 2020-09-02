@@ -7,28 +7,6 @@
     header('location:sign.php?message="Please, enter again."');
   }
   
-  $logged = $_SESSION['email'];
-
-  require('includes/conn.php');
-
-  if ($_REQUEST['action'] == 'insert') {
-    $sql = "INSERT INTO `alunos` (nome, email, data_nascimento) VALUES ('Gabriel Augusto', 'gab@example.com', '2020-08-25')";
-    $result = $conn->query($sql);
-    $message = "Inserted with Sucess.";
-
-  } elseif ($_REQUEST['action'] == 'update') {
-    $nome = $_REQUEST['nome'];
-    $id = $_REQUEST['id'];
-
-    $sql = "UPDATE alunos SET nome='$nome' WHERE id=$id";
-    $result = $conn->query($sql);
-    $message = "Updated with Sucess.";
-
-  } elseif ($_REQUEST['action'] == 'delete') {
-    $sql = "DELETE FROM alunos WHERE id=$id";
-    $result = $conn->query($sql);
-    $message = "Deleted with sucess";
-  }
 ?>
 
 <!doctype html>
@@ -74,25 +52,35 @@
   <div class="container">
 
     <h1>Welcome, Home</h1>
-    <?
-      if ($result->num_rows > 0) {
-            
-      echo '<table class="table">';
-      echo '<thead>';
-      echo '  <tr>';
-      echo '    <th scope="col">#</th>';
-      echo '    <th scope="col">Nome</th>';
-      echo '    <th scope="col">Data de Nascimento</th>';
-      echo '  </tr>';
-      echo '</thead> ';
-      while($row = $result->fetch_assoc()) {
-          echo "<tr><td> " . $row["id"]. " </td><td> " . $row["nome"]. " </td><td>  " . $row["data_nascimento"]. "</td></tr>";
-      }
-      echo '</table>';
-    } else {
-      echo "Nenhum resultado. Por favor, faça a busca novamente.";
-    }
-    ?>
+
+    <form action="home.php?action=insert" method='post'>
+      <div class="form-group">
+        <label for="pwd">Name:</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="confirming_pwd">document:</label>
+        <input type="text" class="form-control" id="document" name='document'>
+      </div>
+
+      <div class="form-group">
+        <label for="confirming_pwd">e-mail:</label>
+        <input type="email" class="form-control" id="email" name='email'>
+      </div>
+
+      <div class="form-group">
+        <label for="confirming_pwd">Birthday:</label>
+        <input type="date" class="form-control" id="birthday" name='birthday'>
+      </div>
+
+      <div class="form-group">
+        <label for="confirming_pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" name='pwd'>
+      </div>      
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 
     <a href='logout.php'>Logout</a>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"> </script>

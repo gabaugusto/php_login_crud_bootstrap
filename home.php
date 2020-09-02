@@ -19,7 +19,13 @@
 
   require('includes/conn.php');
   if ($action == 'insert') {
-    $sql_s = "INSERT INTO `alunos` (name, email, data_nascimento) VALUES ('$name', '$email', '$date')";
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $date = $_POST['birthday'];
+    $pwd = $_REQUEST['pwd'];
+    $document = $_POST['document'];
+
+    $sql_s = "INSERT INTO `alunos` (nome, email, data_nascimento, password, cpf) VALUES ('$name', '$email', '$date', '$pwd', $document)";
     $result_s = $conn->query($sql_s);
     $message = "Inserted with Sucess.";
 
@@ -85,7 +91,7 @@
     <?
       if ($message != ""){
         echo '<div class="alert alert-secondary">';
-        echo   '<strong>Success!</strong> ' . $message;
+        echo   '<strong></strong> ' . $message;
         echo '</div>';
       }
 
