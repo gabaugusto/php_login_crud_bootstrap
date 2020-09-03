@@ -9,13 +9,13 @@ Sistema de login com CRUD básico utilizando o básico do PHP e do Bootstrap.
 ## Getting Started
 
 1. Download All Files. 
-2. Import the file [includes/base.sql](base.sql) in your database.
+2. Import the file [base.sql](includes/base.sql) in your database.
 3. Run. 
 
 ## Começando. 
 
 1. Baixe todos os arquivos.
-2. Importe o arquivo [includes/base.sql](base.sql) no seu banco de dados. 
+2. Importe o arquivo [base.sql](includes/base.sql) no seu banco de dados. 
 3. Rode.
 
 ## License
