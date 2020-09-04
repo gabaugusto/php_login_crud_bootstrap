@@ -43,6 +43,34 @@
     $message = "Deleted with sucess";
   }
 
+  require('./phpmailer/PHPMailerAutoload.php');
+  
+  $messageComplete =  '===============<br/>';
+  $messageComplete .= 'Esta mensagem foi enviada pelo site ProjetoEscolar.com.br<br/>';
+  $messageComplete .= '===============';
+  
+  $mail = new PHPMailer;
+  $mail->isSMTP();
+  $mail->SMTPDebug = 1;
+  $mail->SMTPAuth = true; 
+  $mail->Host = 'mail.gabrielaugusto.me';
+  $mail->Port = 465;
+  $mail->SMTPSecure = 'ssl';
+  $mail->Username = "hello@gabrielaugusto.me";
+  $mail->Password = "[YOUR PASSWORD]";
+
+  $mail->addAddress('hello@gabrielaugusto.me', 'Nome do Aluno');
+  $mail->setFrom('hello@gabrielaugusto.me', 'GabrielAugusto.me');  
+
+  $mail->Subject = 'Novo Cadastro';
+  $mail->msgHTML($messageComplete);
+
+  if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+  } else {
+
+  }
+
   $sql = "SELECT * FROM `alunos`";
   $result = $conn->query($sql);
 ?>
