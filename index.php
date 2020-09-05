@@ -28,7 +28,7 @@
     }
   </style>
   <!-- Custom styles for this template -->
-  <link href="assets/dist/css/album.css" rel="stylesheet">
+  <link href="assets/dist/css/custom.css" rel="stylesheet"> 
 </head>
 
 <body>

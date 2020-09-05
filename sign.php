@@ -1,3 +1,11 @@
+<?
+  session_start();
+  if((isset($_SESSION['email']) == true) and (isset($_SESSION['password']) == true)) {
+    header('location:home.php');
+  }
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +36,7 @@
     }
   </style>
 
-  <link href="assets/dist/css/signin.css" rel="stylesheet">
+  <link href="assets/dist/css/custom.css" rel="stylesheet"> 
 </head>
 <body>
 
@@ -52,7 +60,7 @@
   <input type="password" id="inputPassword" class="form-control" name='password' placeholder="Password" required>
   <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> Remember me
+      <input type="checkbox" value="remember-me">Remember me
     </label>
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

@@ -1,25 +1,75 @@
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-md-7">
-                <!-- Links -->
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                        <a class="nav-link" href="insert.php">Insert</a>
-                    </li>                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="update.php">Change Password</a>
-                    </li>                
-                    <li class="nav-item">
-                        <a class="nav-link" href="delete.php">Delete An User</a>
-                    </li>
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Dashboard <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user_insert.php">
+                    <span data-feather="file"></span>
+                    Insert
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user_update_password.php">
+                    <span data-feather="shopping-cart"></span>
+                    Change Password
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user_delete.php">
+                    <span data-feather="users"></span>
+                    Delete
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2"></span>
+                    Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Integrations
+                </a>
+            </li>
+        </ul>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href='logout.php'>Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Saved reports</span>
+            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Current month
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Last quarter
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Social engagement
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Year-end sale
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>

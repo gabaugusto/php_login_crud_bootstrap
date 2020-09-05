@@ -1,18 +1,31 @@
-<?
+<?php
   session_start();
-
-  if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)) {
-    unset($_SESSION['email']);
-    unset($_SESSION['password']);
-    header('location:sign.php?message="Please, enter again."');
-  }
-  
-  $logged = $_SESSION['email'];
-
+  session_regenerate_id(true);
   require('includes/conn.php');
-  $sql = "SELECT * FROM `alunos`";
+
+  $senha = $_POST['pwd'];
+  $login = $_SESSION['email'];
+ 
+  $_SESSION['permite_trocar_senha'] = 0;
+  
+  $sql = "SELECT * FROM `alunos` WHERE `email` = '$login' AND `password`= '$senha'";
   $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    $_SESSION['permite_trocar_senha'] = 1;
+
+    require('./phpmailer/PHPMailerAutoload.php');
+    require('./includes/envio_de_email.php');
+
+    $message = 'Para trocar de senha clique no link abaixo<br/>';
+    $message .= 'Link para trocar senha: <a href="http://localhost/projeto_escolar/change_password.php?t=1">Link</a>';
+    $login = "hello@gabrielaugusto.me";
+    while($row = $result->fetch_assoc()) {
+        enviar_email($login, $row['nome'], 'Você quer trocar de senha?', $message);  
+    }
+  }
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -49,28 +62,14 @@
 </head>
 
 <body>
-
   <? require('includes/header.php'); ?>
   <? require('includes/menu.php'); ?>
   <div class="container">
 
-    <h1>Welcome, Home</h1>
-    <form action="home.php?action=update" method='post'>
-      <div class="form-group">
-        <label for="pwd">New Password:</label>
-        <input type="password" class="form-control" id="pwd" name="pwd">
-      </div>
-      <div class="form-group">
-        <label for="confirming_pwd">Confirm New Password:</label>
-        <input type="password" class="form-control" id="confirming_pwd" name='confirming_pwd'>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    <h2>Changing password</h2>
+    <p>Please. Check your e-mail</p>
 
-    <a href='logout.php'>Logout</a>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"> </script>
     <script>
       window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
     </script>
@@ -78,3 +77,4 @@
 </body>
 
 </html>
+

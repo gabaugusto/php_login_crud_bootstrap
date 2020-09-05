@@ -1,17 +1,13 @@
 <?
-  session_start();
 
-  if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)) {
-    unset($_SESSION['email']);
-    unset($_SESSION['password']);
-    header('location:sign.php?message="Please, enter again."');
-  }
-  
-  $logged = $_SESSION['email'];
+    session_start();
 
-  require('includes/conn.php');
-  $sql = "SELECT * FROM `alunos`";
-  $result = $conn->query($sql);
+    if (isset($_REQUEST['permite_trocar_senha'])) {
+        $_SESSION['t'] = $_REQUEST['t'];
+    } else {
+        header('location:user_update_password.php');
+    }
+
 ?>
 
 <!doctype html>
@@ -47,36 +43,25 @@
 
   <link href="assets/dist/css/album.css" rel="stylesheet">
 </head>
-
 <body>
-
   <? require('includes/header.php'); ?>
   <? require('includes/menu.php'); ?>
   <div class="container">
 
     <h1>Welcome, Home</h1>
+    <form action="home.php?action=update" method='post'>
+      <p>Por favor, informe a sua senha nova:</p>
+      <div class="form-group">
+        <label for="pwd">Nova senha:</label>
+        <input type="password" class="form-control" id="pwd" name="pwd">
+      </div>
 
-
-
-    <?
-      if ($result->num_rows > 0) {
-            
-      echo '<table class="table">';
-      echo '<thead>';
-      echo '  <tr>';
-      echo '    <th scope="col">#</th>';
-      echo '    <th scope="col">Nome</th>';
-      echo '    <th scope="col">Data de Nascimento</th>';
-      echo '  </tr>';
-      echo '</thead> ';
-      while($row = $result->fetch_assoc()) {
-          echo "<tr><td> " . $row["id"]. " </td><td> " . $row["nome"]. " </td><td>  " . $row["data_nascimento"]. "</td><td><a href='home.php?action=delete&id=" . $row["id"]. "'>Apagar</a></td></tr>";
-      }
-      echo '</table>';
-    } else {
-      echo "Nenhum resultado. Por favor, faça a busca novamente.";
-    }
-    ?>
+      <div class="form-group">
+        <label for="confirme_pwd">Confirme a Nova senha:</label>
+        <input type="password" class="form-control" id="confirme_pwd" name="confirme_pwd">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 
     <a href='logout.php'>Logout</a>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
