@@ -22,8 +22,8 @@ Sistema de login com CRUD básico utilizando o básico do PHP e do Bootstrap.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Licença 
 
-Este projeto é distribuído sob o MIT License - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes
+Este projeto é distribuído sob o MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes
